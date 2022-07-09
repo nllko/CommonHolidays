@@ -1,8 +1,10 @@
 package com.example.commonholidays.models;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
 public class Holiday {
+
   private LocalDate date;
   private String localName;
   private String name;
@@ -12,6 +14,10 @@ public class Holiday {
   private String[] counties;
   private int launchYear;
   private String[] types;
+
+  public Holiday() {
+
+  }
 
   public Holiday(LocalDate date, String localName, String name, String countryCode, boolean fixed,
       boolean global, String[] counties, int launchYear, String[] types) {
@@ -96,5 +102,25 @@ public class Holiday {
 
   public void setTypes(String[] types) {
     this.types = types;
+  }
+
+  @Override
+  public String toString() {
+    return "Holiday{" +
+        "date=" + date +
+        ", localName='" + localName + '\'' +
+        ", name='" + name + '\'' +
+        ", countryCode='" + countryCode + '\'' +
+        ", fixed=" + fixed +
+        ", global=" + global +
+        ", counties=" + Arrays.toString(counties) +
+        ", launchYear=" + launchYear +
+        ", types=" + Arrays.toString(types) +
+        '}';
+  }
+
+  public boolean equals(Holiday holiday) {
+    return this.date.isEqual(holiday.getDate())
+        && this.getName().equals(holiday.getName());
   }
 }
